@@ -1,0 +1,76 @@
+# Configuration for card processing pipeline
+
+# Input/Output paths
+paths:
+  input_sprite: "img/cards_upscayl_4x_upscayl-standard-4x.png"
+  output_individual_cards: "output/individual_cards"
+  output_collages: "output/collages"
+  output_pdfs: "output/pdfs"
+  combined_pdf: "output/pdfs/all_collages.pdf"
+
+# Sprite sheet configuration
+sprite_sheet:
+  # Grid layout: number of rows and columns in the sprite sheet
+  rows: 9
+  cols: 12
+  # Total cards (should equal rows * cols)
+  total_cards: 108
+
+# Card dimensions
+card:
+  # Target size for individual cards (in inches)
+  width_inches: 2.5
+  height_inches: 3.5
+  # DPI for print quality
+  dpi: 300
+
+# Collage configuration
+collage:
+  # Grid layout for each collage page
+  grid_rows: 3
+  grid_cols: 3
+  # Collage size (in inches)
+  width_inches: 7.5
+  height_inches: 10.5
+  # Card assignments for each collage
+  # Each collage should have grid_rows * grid_cols cards
+  # Supports ranges: "1-9" expands to [1,2,3,4,5,6,7,8,9]
+  # Can mix integers and ranges: [1, "2-5", 6, "7-9"]
+  assignments:
+    - name: "collage_1"
+      cards: ["1-9"]  # Cards 1-9 (9 cards)
+    - name: "collage_2"
+      cards: ["10-18"]  # Cards 10-18 (9 cards)
+    - name: "collage_3"
+      cards: ["19-27"]  # Cards 19-27 (9 cards)
+    - name: "collage_4"
+      cards: ["28-36"]  # Cards 28-36 (9 cards)
+    - name: "collage_5"
+      cards: ["37-45"]  # Cards 37-45 (9 cards)
+    - name: "collage_6"
+      cards: ["46-54"]  # Cards 46-54 (9 cards)
+    - name: "collage_7"
+      cards: ["55-63"]  # Cards 55-63 (9 cards)
+    - name: "collage_8"
+      cards: ["64-72"]  # Cards 64-72 (9 cards)
+    - name: "collage_9"
+      cards: ["73-81"]  # Cards 73-81 (9 cards)
+    - name: "collage_10"
+      cards: ["82-90"]  # Cards 82-90 (9 cards)
+    - name: "collage_11"
+      cards: ["91-99"]  # Cards 91-99 (9 cards)
+    - name: "collage_12"
+      cards: ["100-108"]  # Cards 100-108 (9 cards)
+
+# PDF configuration
+pdf:
+  # Page size: "letter" [8.5, 11], "legal" [8.5, 14], "a4" [8.27, 11.69]
+  # or specify custom [width, height] in inches
+  page_size: "letter"
+  # Margins are automatically calculated to center the collage on the page
+  # based on page_size and collage dimensions
+  # Cutting line style
+  cutting_lines:
+    enabled: true
+    color: [0, 0, 0]  # RGB values 0-1 (black)
+    width: 0.5  # line width in points
